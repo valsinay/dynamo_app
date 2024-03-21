@@ -1,9 +1,4 @@
 import { DayCardProps } from "../../src/components/Card/DayCard";
-import {
-  isPermissionAllowed,
-  isPermissionBlocked,
-  isPermissionAsk,
-} from "cypress-browser-permissions";
 
 describe("Homepage", () => {
   beforeEach(() => {
