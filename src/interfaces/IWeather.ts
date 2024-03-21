@@ -2,26 +2,9 @@ import { ReactNode } from "react";
 
 export type Unit = "metric" | "imperial";
 
-export interface WeatherContextProps {
-  data: Forecast ;
-  loading: boolean;
-  unit: Unit;
-  setUnit: (unit: Unit) => void;
-  showModal: boolean;
-  toggleModal: (showModal: boolean) => void;
-}
-
 export interface WeatherProvider {
   children: ReactNode;
 }
-
-export interface HeaderProps {
-  city: City
-  unit: Unit;
-  setUnit: (unit: Unit) => void;
-}
-
-
 
 export interface City {
   country: string;
@@ -50,12 +33,4 @@ export interface Weather {
   id: number;
   main: string;
   description: string;
-}
-
-export interface CardData {
-  data: WeatherData;
-  date: string;
-  overallConditions: string;
-  description: string;
-  weather: Array<WeatherData>;
 }

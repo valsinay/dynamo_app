@@ -1,5 +1,5 @@
 # Latest update
-If user has disabled geolocation, an alert shows up to inform that it must be enabled in order to locate his location. Grid layout has replaced flex for the weather cards.Sensitive information is now received via environment variables.
+If user has disabled geolocation, an alert shows up to inform that it must be enabled in order to locate his location. Grid layout has replaced flex for the weather cards.Sensitive information is now received via environment variables. Some functions have been extracted as custom hooks and code readability has been improved.Implemented e2e tests with Cypress.
 
 ## Setup
 

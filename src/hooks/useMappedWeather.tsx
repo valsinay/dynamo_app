@@ -1,33 +1,19 @@
 import { useState, useEffect } from "react";
-import { CardData, Weather, WeatherData } from "../models/models";
+import { CardData, WeatherData } from "../interfaces/index";
+import { useWeatherContext } from "../context/weatherContext";
 
-// interface WeatherData {
-//     dt_txt: string;
-//     main: {
-//       temp_max: number;
-//       temp_min: number;
-//       temp: number;
-//     };
-//     weather: Array<Weather>;
-// }
-
-// interface CardData {
-//   data: WeatherData;
-//   description: string;
-//   date: string;
-//   overallConditions: string;
-//   weather: WeatherData[];
-// }
-
-export const useMappedWeather = (data: { list: WeatherData[] } ) => {
-  const [weatherGroupedByDays, setWeatherGroupedByDays] = useState<CardData[]>([]);
+export const useMappedWeather = () => {
+  const { data } = useWeatherContext();
+  const [weatherGroupedByDays, setWeatherGroupedByDays] = useState<CardData[]>(
+    []
+  );
 
   useEffect(() => {
     const fetchData = async () => {
-      if (data) {
+      if (data && data.list) {
         const newWeatherGroupedByDays: CardData[] = [];
 
-        data.list.map((forecast: WeatherData) =>{
+        data.list.forEach((forecast: WeatherData) => {
           const currDate = new Date(forecast.dt_txt).toLocaleString("en-GB", {
             weekday: "long",
           });
@@ -47,7 +33,7 @@ export const useMappedWeather = (data: { list: WeatherData[] } ) => {
               weather: [forecast],
             });
           }
-        })
+        });
 
         setWeatherGroupedByDays(newWeatherGroupedByDays.slice(0, 5));
       }

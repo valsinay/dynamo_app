@@ -1,11 +1,18 @@
 import React, { createContext, useState, useContext } from "react";
 import {
+  Forecast,
   Unit,
-  WeatherContextProps,
   WeatherProvider as WeatherProviderProps,
-} from "../models/models";
+} from "../interfaces/IWeather";
 import { useFetchWeatherData } from "../hooks/useWeatherData";
-
+interface WeatherContextProps {
+  data: Forecast;
+  loading: boolean;
+  unit: Unit;
+  setUnit: (unit: Unit) => void;
+  showModal: boolean;
+  toggleModal: (showModal: boolean) => void;
+}
 const WeatherContext = createContext({} as WeatherContextProps);
 
 export const useWeatherContext = () => {

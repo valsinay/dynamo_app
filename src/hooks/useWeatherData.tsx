@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Forecast, Unit } from "../models/models";
+import { Forecast, Unit } from "../interfaces/IWeather";
 import { useLocation } from "./useLocation";
 
 export const useFetchWeatherData = (unit: Unit) => {

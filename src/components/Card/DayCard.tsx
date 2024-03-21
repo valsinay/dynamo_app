@@ -1,6 +1,6 @@
 import React from "react";
 import { StyledP, StyledH2, ButtonWrapper } from "./Card.styles";
-import { CardData } from "../../models/models";
+import { CardData } from "../../interfaces/ICardData";
 import { useWeatherContext } from "../../context/weatherContext";
 import { checkWeatherIcon } from "../../helpers/getIcon";
 

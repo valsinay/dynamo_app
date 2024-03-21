@@ -10,7 +10,7 @@ import {
 import "../../index.css";
 import { DayCard } from "../Card/DayCard";
 import { useWeatherContext } from "../../context/weatherContext";
-import { CardData, WeatherData } from "../../models/models";
+import { CardData, WeatherData } from "../../interfaces/index";
 import { HourCard } from "../Card/HourCard";
 import { Header } from "../Header/Header";
 import { useMappedWeather } from "../../hooks/useMappedWeather";
@@ -20,34 +20,7 @@ export const Home = () => {
     useWeatherContext();
   const [selectedDay, setSelectedDay] = useState({} as CardData);
   const myRef = useRef(null);
-  // const weatherGroupedByDays = useMappedWeather(data);
-
-  const mappedWeather = () => {
-    const weatherGroupedByDays: CardData[] = [];
-
-    if (data) {
-      data.list.map((forecast: WeatherData) => {
-        const currDate = new Date(forecast.dt_txt).toLocaleString("en-GB", {
-          weekday: "long",
-        });
-
-        const existingDate = weatherGroupedByDays.find(
-          (day) => day.date.toLocaleString() === currDate.toLocaleString()
-        );
-
-        if (existingDate) return existingDate.weather.push(forecast);
-
-        return weatherGroupedByDays.push({
-          data: forecast,
-          description: forecast.weather[0].description,
-          date: currDate,
-          overallConditions: forecast.weather[0].main,
-          weather: [forecast],
-        });
-      });
-    }
-    return weatherGroupedByDays.slice(0, 5);
-  };
+  const weatherGroupedByDays = useMappedWeather();
 
   return (
     <Wrapper $loading={loading} ref={myRef}>
@@ -88,7 +61,7 @@ export const Home = () => {
         <>
           <Header city={data.city} unit={unit} setUnit={setUnit} />
           <CardsWrapper data-testid="cardsWrapper">
-            {mappedWeather().map((day, _index) => {
+            {weatherGroupedByDays.map((day, _index) => {
               return (
                 <DayCard
                   key={day.data.dt_txt + _index}

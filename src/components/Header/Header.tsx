@@ -1,10 +1,16 @@
 import React from "react";
-import { HeaderProps } from "../../models/models";
+import { City, Unit } from "../../interfaces/IWeather";
 import { H1, StyledButton, StyledDiv } from "./Header.styles";
+
+interface HeaderProps {
+  city: City;
+  unit: Unit;
+  setUnit: (unit: Unit) => void;
+}
 
 export const Header = ({ city, unit, setUnit }: HeaderProps) => {
   return (
-    <StyledDiv $container >
+    <StyledDiv $container>
       <H1 data-testid="header">
         5-Day Weather Forecast, {city.name}, {city.country}
       </H1>
