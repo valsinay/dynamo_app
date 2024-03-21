@@ -1,10 +1,5 @@
 import styled from "styled-components";
 
-export const StyledH2 = styled.h2<{ $margin?: string }>`
-  font-size: 2rem;
-  color: ${(props) => props.theme.main.black};
-  margin: ${(props) => props.$margin || "0"};
-`;
 
 export const StyledP = styled.p<{ $degrees?: boolean }>`
   font-weight: 700;

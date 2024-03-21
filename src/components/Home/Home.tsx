@@ -2,8 +2,6 @@ import React, { useRef, useState } from "react";
 import {
   CardsWrapper,
   StyledDiv,
-  H1,
-  Loader,
   Wrapper,
   StyledModal,
 } from "./Home.styles";
@@ -14,6 +12,9 @@ import { CardData, WeatherData } from "../../interfaces/index";
 import { HourCard } from "../Card/HourCard";
 import { Header } from "../Header/Header";
 import { useMappedWeather } from "../../hooks/useMappedWeather";
+import { H1 } from "../shared/SharedStyles.styles";
+import { theme } from "../../theme/theme";
+import { Loader } from "../Loader/Loader";
 
 export const Home = () => {
   const { data, loading, unit, setUnit, showModal, toggleModal } =
@@ -36,7 +37,7 @@ export const Home = () => {
           }}
         >
           <StyledDiv $container>
-            <H1>{selectedDay.date} forecast</H1>
+            <H1 $color={theme.main.darkGray}>{selectedDay.date} forecast</H1>
             <StyledDiv className="hourCardsWrapper">
               {selectedDay.weather.map((el: WeatherData) => {
                 return (
@@ -54,8 +55,7 @@ export const Home = () => {
       )}
       {loading ? (
         <>
-          <Loader data-testid="loader" />
-          <H1>Loading...</H1>
+          <Loader />
         </>
       ) : (
         <>

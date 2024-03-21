@@ -1,8 +1,9 @@
 import React from "react";
-import { StyledP, StyledH2, StyledDiv } from "./Card.styles";
+import { StyledP, StyledDiv } from "./Card.styles";
 import { WeatherData } from "../../interfaces/IWeather";
 import { useWeatherContext } from "../../context/weatherContext";
 import { checkWeatherIcon } from "../../helpers/getIcon";
+import { StyledH2 } from "../shared/SharedStyles.styles";
 
 export const HourCard = ({
   dt_txt: dateTimeText,

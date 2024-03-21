@@ -1,6 +1,8 @@
 import React from "react";
 import { City, Unit } from "../../interfaces/IWeather";
-import { H1, StyledButton, StyledDiv } from "./Header.styles";
+import {  StyledDiv } from "./Header.styles";
+import { theme } from "../../theme/theme";
+import { H1 ,StyledButton} from "../shared/SharedStyles.styles";
 
 interface HeaderProps {
   city: City;
@@ -11,7 +13,7 @@ interface HeaderProps {
 export const Header = ({ city, unit, setUnit }: HeaderProps) => {
   return (
     <StyledDiv $container>
-      <H1 data-testid="header">
+      <H1 $color={theme.main.black} data-testid="header">
         5-Day Weather Forecast, {city.name}, {city.country}
       </H1>
       <StyledDiv $switch $margin="1rem" data-testid="headerButtons">
